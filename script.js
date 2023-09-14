@@ -32,9 +32,13 @@ function getBrightness(rgbColor) {
 }
 
 const getRandomDadJoke = async () => {
-  const config = { headers: { Accept: "application/json" } };
-  const jokes = await axios.get("https://icanhazdadjoke.com/", config);
-  return jokes.data.joke;
+  try {
+    const config = { headers: { Accept: "application/json" } };
+    const jokes = await axios.get("https://icanhazdadjoke.com/", config);
+    return jokes.data.joke;
+  } catch (e) {
+    console.log(e);
+  }
 };
 
 button.addEventListener("click", () => {
