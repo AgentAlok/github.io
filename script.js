@@ -41,12 +41,15 @@ const getRandomDadJoke = async () => {
   }
 };
 
-button.addEventListener("click", () => {
+button.addEventListener("click", async () => {
   getRandomDadJoke()
     .then((joke) => {
       if (joke === undefined) {
         joke = "Sorry, no joke for you.";
       }
+
+      display.innerText = joke;
+
       let color = makeRandColor();
 
       body.style.backgroundColor = color;
@@ -60,7 +63,6 @@ button.addEventListener("click", () => {
       } else {
         display.style.color = "black"; // If background is light, set text to black
       }
-      display.innerText = joke;
     })
     .catch((err) => {
       console.log(err);
