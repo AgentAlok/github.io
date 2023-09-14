@@ -47,23 +47,22 @@ button.addEventListener("click", () => {
       if (joke === undefined) {
         joke = "Sorry, no joke for you.";
       }
+      let color = makeRandColor();
+
+      body.style.backgroundColor = color;
+
+      // Calculate the brightness of the background color
+      let brightness = getBrightness(color);
+
+      // Set the text color based on brightness
+      if (brightness < 128) {
+        display.style.color = "white"; // If background is dark, set text to white
+      } else {
+        display.style.color = "black"; // If background is light, set text to black
+      }
       display.innerText = joke;
     })
     .catch((err) => {
       console.log(err);
     });
-
-  let color = makeRandColor();
-
-  body.style.backgroundColor = color;
-
-  // Calculate the brightness of the background color
-  let brightness = getBrightness(color);
-
-  // Set the text color based on brightness
-  if (brightness < 128) {
-    display.style.color = "white"; // If background is dark, set text to white
-  } else {
-    display.style.color = "black"; // If background is light, set text to black
-  }
 });
