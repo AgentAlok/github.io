@@ -44,6 +44,9 @@ const getRandomDadJoke = async () => {
 button.addEventListener("click", () => {
   getRandomDadJoke()
     .then((joke) => {
+      if (joke === undefined) {
+        joke = "Sorry, no joke for you.";
+      }
       display.innerText = joke;
     })
     .catch((err) => {
